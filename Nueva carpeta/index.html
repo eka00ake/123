@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elinka Componentes PC - Oferta AirPods Pro 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Banner inicial */
+        .banner-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .banner-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        }
+
+        .banner-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .banner-header span {
+            color: #2b96e6;
+        }
+
+        /* Simulación visual del banner */
+        .banner-graphic {
+            background: linear-gradient(135deg, #09131d 0%, #112133 100%);
+            border: 1px solid #1f3a58;
+            border-radius: 12px;
+            padding: 30px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .offer-title {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            color: #2b96e6;
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .discount-tag {
+            background: #2b96e6;
+            color: #ffffff;
+            font-size: 36px;
+            font-weight: bold;
+            padding: 10px 25px;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(43, 150, 230, 0.4);
+        }
+
+        .price-tag {
+            font-size: 22px;
+            margin-top: 5px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #8b949e;
+            margin-right: 10px;
+        }
+
+        .new-price {
+            color: #3fb950;
+            font-weight: bold;
+            font-size: 28px;
+        }
+
+        .click-hint {
+            color: #58a6ff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        /* Pantalla de Oferta Caducada */
+        #expired-card {
+            display: none;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .coyote-img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #30363d;
+        }
+
+        h1 {
+            color: #ff5555;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #8b949e;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .prank-btn {
+            background-color: #238636;
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .prank-btn:hover {
+            background-color: #2ea043;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TARJETA 1: BANNER DE LA OFERTA -->
+    <div class="banner-card" id="banner" onclick="showExpired()">
+        <div class="banner-header">ELIN<span>KA</span> COMPONENTES PC</div>
+        
+        <div class="banner-graphic">
+            <div class="offer-title">¡OFERTA INCREÍBLE!</div>
+            <div class="product-name">AIRPODS PRO 3</div>
+            <div class="discount-tag">¡40% DE DESCUENTO!</div>
+            <div class="price-tag">
+                <span class="old-price">249 €</span>
+                <span class="new-price">149,40 €</span>
+            </div>
+        </div>
+
+        <div class="click-hint">👇 Haz clic aquí para reclamar tu oferta 👇</div>
+    </div>
+
+    <!-- TARJETA 2: REVELACIÓN / COYOTE -->
+    <div id="expired-card">
+        
+        <img src="coyote.jpg" alt="El Coyote" class="coyote-img">
+
+        <h1>¡Oooh! Esta oferta ha volado...</h1>
+        <p>¡Llegaste tarde ! Las unidades limitadas de los <strong>AirPods Pro 3 al 40% (149,40 €)</strong> se han agotado.</p>
+        
+        
+    </div>
+
+    <script>
+        function showExpired() {
+            document.getElementById('banner').style.display = 'none';
+            document.getElementById('expired-card').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
